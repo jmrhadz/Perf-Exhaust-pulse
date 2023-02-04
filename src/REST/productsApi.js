@@ -6,12 +6,12 @@ class ProductsApi {
             const data = await resp.json()
             return data;
         } catch(e) {
-            console.log('fetch products had an issue', e)
+            //console.log('fetch products had an issue', e)
         }
     }
 
     put = async (product) => {
-        console.log("api: updating", product.name)
+        //console.log("api: updating", product.name)
         try {const resp = await fetch(`${ENDPOINT}/${product._id}`, {
             method: 'PUT',
             headers: {
@@ -21,12 +21,12 @@ class ProductsApi {
         })
         return await resp.json()
         } catch(e) {
-            console.log('update product had an issue', e)
+            //console.log('update product had an issue', e)
         }
     }
     
     post = async (product) => {
-        console.log("api: creating", product.name)
+        //console.log("api: creating", product.name)
         try{const resp = await fetch(ENDPOINT, {
             method: 'POST',
             headers: {
@@ -36,12 +36,12 @@ class ProductsApi {
         })
         return await resp.json()
         } catch(e) {
-            console.log('Creating product had an issue', e)
+            //console.log('Creating product had an issue', e)
         }
     }
 
     delete = async (product) => {
-        console.log("api: deleting", product.name)
+        //console.log("api: deleting", product.name)
         try{const resp = await fetch(`${ENDPOINT}/${product._id}`, {
             method: 'DELETE',
             headers: {
@@ -50,7 +50,7 @@ class ProductsApi {
         })
         return await resp.json()
         } catch(e) {
-            console.log('Deleting product had an issue', e)
+            //console.log('Deleting product had an issue', e)
         }
     }
 }

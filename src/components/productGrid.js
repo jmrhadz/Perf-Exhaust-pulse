@@ -8,7 +8,7 @@ import { productsAPI } from "../REST/productsApi";
 //     const fetchProducts 
 
 //     useEffect(()=> {
-//         console.log("fetching")
+//         //console.log("fetching")
 //         fetchProducts() 
 //     }, [])
 
@@ -31,6 +31,7 @@ export default class ProductGrid extends React.Component {
         this.addProductHandler = this.addProductHandler.bind(this)
         this.updateHandler = this.updateHandler.bind(this)
         this.deleteHandler = this.deleteHandler.bind(this)
+        this.cancelNewProductHandler = this.cancelNewProductHandler.bind(this)
     }
     
 
@@ -41,37 +42,41 @@ export default class ProductGrid extends React.Component {
     fetchProducts = async () => {
         const products = await productsAPI.get();
         this.setState({ products })
-        console.log(products)
+        //console.log(products)
     }
 
     updateHandler = async (updatedProduct) => {
-        console.log('updating', updatedProduct.name)
+        //console.log('updating', updatedProduct.name)
         await productsAPI.put(updatedProduct);
         this.fetchProducts();
     }
 
     deleteHandler = async (product) => {
-        console.log('deleting', product.name)
+        //console.log('deleting', product.name)
         await productsAPI.delete(product);
         this.fetchProducts();
     }
 
     addProductHandler = async (product) => {
-        console.log("creating new product", product.name)
+        //console.log("creating new product", product.name)
        await productsAPI.post(product);
        this.setState(state=>({showCreateNew: !state.showCreateNew, btnCreateNew:"Add New Product"}))
        this.fetchProducts();
     }
 
+    cancelNewProductHandler = (e) => {
+        this.setState({showCreateNew:false})
+    }
+
     createNewProduct = (e) => {
         e.preventDefault()
-        console.log(e)
-        console.log("should change button text?", this.state.showCreateNew)
+        //console.log(e)
+        //console.log("should change button text?", this.state.showCreateNew)
         if(this.state.showCreateNew){
-            console.log("changing button text")
-            this.setState(state => ({ btnCreateNew: "Add New Product"}))
+            //console.log("changing button text")
+            this.setState(state => ({ showCreateNew: false, btnCreateNew: "Add New Product"}))
         }else{
-            this.setState(state => ({ showCreateNew: !state.showCreateNew, btnCreateNew: "Cancel" }), console.log(this.state.showCreateNew))
+            this.setState(state => ({ showCreateNew: !state.showCreateNew, btnCreateNew: "Cancel" }))
         }
     }
 
@@ -79,7 +84,7 @@ export default class ProductGrid extends React.Component {
         return(
             <div className="product-list row row-cols-4">
                 <button className="btn btn-accent3 col-12" onClick={this.createNewProduct}>{this.state.btnCreateNew}</button>
-                {(this.state.showCreateNew) ? <Product key="new" info addProductHandler={this.addProductHandler}/> : ""}
+                {(this.state.showCreateNew) ? <Product key="new" info addProductHandler={this.addProductHandler} cancelNewProductHandler={this.cancelNewProductHandler}/> : ""}
                 {this.state.products.map(product => {
                     return( <Product
                             key={product._id}
