@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import Navbar from './components/navbar';
+import ProductGrid from './components/productGrid'
+import ProductInfoCard from './components/productInfo'
 import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-dark">
+      <Navbar theme="dark" hasLogo={true} brand="Performance Exhuast Plus" tagline="Dual Exhaust Kits for your Truck" info={false} button="Buy Now"/>
+      <Navbar theme="warning" hasLogo={false} brand={false} tagline={false} info="Editing Page" button="Publish Products"/>
+      <div className="row">
+        {/* <div className="col-2 container bg-primary"><ProductInfoCard/></div> */}
+        <div className="col-10 container bg-info"><ProductGrid/></div>
+      </div>
     </div>
   );
 }
