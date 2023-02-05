@@ -2,36 +2,13 @@ import React, { useState } from "react";
 
 export default function Product(props){
     //console.log(props)
-    let { info, product, updateHandler, deleteHandler, addProductHandler, cancelNewProductHandler  } = props
+    let { info, product, updateHandler, deleteHandler, addProductHandler, cancelNewProductHandler, index  } = props
     const [productObj, setProductObj] = useState(product ? product : {name:'', description:'',price:'',stock:0})
     const [ isEdit, setEdit ] = useState(info)
-    // const [name, setName] =  useState("")
-    // const [description, setDescription] = useState("")
-    // const [price, setPrice] = useState("")
-    // const [stock, setStock] = useState("")
 
-    // if(product){
-    //     //console.log("product exists, Setting state")
-    //     setName(product.name)
-    //     setDescription(product.description)
-    //     setPrice(product.price)
-    //     setStock(product.stock)
-    // }
-
-    //console.log(productObj)
-    //console.log(productObj.name, isEdit)
-
-
-
-    const pictureEndpoint = "https://loremflickr.com/640/480/transport";
-    const picture = (product) ? `${pictureEndpoint}=${product._id}` : pictureEndpoint
+    const pictureEndpoint = "https://loremflickr.com/320/240/transport";
+    const picture = (product) ? `${pictureEndpoint}=${index}` : pictureEndpoint
    
-    // //console.log(productObj.name)
-    // //console.log(productObj.description)
-    // //console.log(picture)
-    // //console.log(productObj.price)
-    // //console.log(productObj.stock)
-
     const limitString = (string = "", limit = 50) => {
         let appendix = (string.length > limit) ? "..." : ""
         return string.substring(0, limit) + appendix;
@@ -56,7 +33,6 @@ export default function Product(props){
     }
 
     const newProduct = (e) => {
-        //e.preventDefault()
         //console.log(e)
         //console.log("new product", productObj)
         addProductHandler(productObj)
@@ -102,17 +78,17 @@ export default function Product(props){
     }
 
     return (
-        <div className="card col m-1">
+        <div className="card col-lg-3 col-md-4 col-12">
             <div className="card-header"><h4>{productObj.name}</h4></div>
             <div className="card-body">
                 <img className="w-75" src={picture} alt="product"/>
                 <p>{limitString(productObj.description)}</p>
             </div>
-            <div className={"card-footer"+ ((productObj.stock>3)?"":"bg-danger")} >
-                <strong className="me-2">${productObj.price}</strong>
-                   {productObj.stock} left  
-                <button className="btn btn-outline-dark mx-2 my-1" onClick={onUpdate}>Edit</button>
-                <button className="btn btn-outline-primary mx-2 my-1" onClick={onDelete}>Delete</button>
+            <div className={"card-footer row"+ ((productObj.stock>3)?"":" bg-warning")} >
+                <strong className="col-6">${productObj.price}</strong>
+                <button className="btn btn-outline-dark form-control col" onClick={onUpdate}>Edit</button>
+                 <span className="col-6" >{productObj.stock} in stock</span>
+                <button className="btn btn-outline-primary form-control col" onClick={onDelete}>Delete</button>
                 </div>
             
         </div>

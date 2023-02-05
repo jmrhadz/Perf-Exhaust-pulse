@@ -82,12 +82,13 @@ export default class ProductGrid extends React.Component {
 
     render(){
         return(
-            <div className="product-list row row-cols-4">
+            <div className="product-list row row-cols-4 justify-content-around ">
                 <button className="btn btn-accent3 col-12" onClick={this.createNewProduct}>{this.state.btnCreateNew}</button>
                 {(this.state.showCreateNew) ? <Product key="new" info addProductHandler={this.addProductHandler} cancelNewProductHandler={this.cancelNewProductHandler}/> : ""}
-                {this.state.products.map(product => {
+                {this.state.products.map((product, index) => {
                     return( <Product
                             key={product._id}
+                            index={index}
                             product={product}
                             updateHandler={this.updateHandler}
                             deleteHandler={this.deleteHandler}/>)
