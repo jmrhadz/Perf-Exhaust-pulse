@@ -1,4 +1,7 @@
-This is a basic product upload/edit page for an automotive parts destributor.
+This is a basic product upload/edit page for an automotive parts destributor.  The brand name and repo name have been purposely misrepresented to protect the innocent. 𝅘𝅥𝅮Cue Law & Order theme𝅘𝅥𝅯
+
+
+
 
 In the project directory, you can run:
 
