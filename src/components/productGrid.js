@@ -65,7 +65,7 @@ export default class ProductGrid extends React.Component {
     }
 
     cancelNewProductHandler = (e) => {
-        this.setState({showCreateNew:false})
+        this.setState({showCreateNew:false,btnCreateNew:"Add New Product"})
     }
 
     createNewProduct = (e) => {
