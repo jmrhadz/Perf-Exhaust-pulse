@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Perf-Exhaust-pulse/static/css/main.e456e47a.css",
+    "main.js": "/Perf-Exhaust-pulse/static/js/main.d9985a9e.js",
+    "static/js/787.a9e2bf04.chunk.js": "/Perf-Exhaust-pulse/static/js/787.a9e2bf04.chunk.js",
+    "static/media/PEP.svg": "/Perf-Exhaust-pulse/static/media/PEP.ac8c0d48636468018682931e6872b7b6.svg",
+    "index.html": "/Perf-Exhaust-pulse/index.html",
+    "main.e456e47a.css.map": "/Perf-Exhaust-pulse/static/css/main.e456e47a.css.map",
+    "main.d9985a9e.js.map": "/Perf-Exhaust-pulse/static/js/main.d9985a9e.js.map",
+    "787.a9e2bf04.chunk.js.map": "/Perf-Exhaust-pulse/static/js/787.a9e2bf04.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e456e47a.css",
+    "static/js/main.d9985a9e.js"
+  ]
+}
